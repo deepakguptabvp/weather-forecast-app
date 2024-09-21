@@ -35,7 +35,7 @@ const App = () => {
 
   console.log("helloo", currentWeatherData, weatherForecastData);
   return (
-    <div>
+    <div style={{backgroundColor: "cyan"}}>
       <SearchInputBox onSubmit={handleSubmit} />
       <CurrentWeather currentWeatherData={currentWeatherData} />
       <WeatherForecast weatherForecastData={weatherForecastData} />
