@@ -10,32 +10,48 @@ const WeatherForecast = ({ weatherForecastData }) => {
         5-Day Weather Forecast
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-8">
-        {list.map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center bg-white p-6 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-          >
-            <h2 className="text-2xl font-semibold text-black-700">
-              {getDayFromTimestamp(item?.dt)}
-            </h2>
-            <img
-              className="w-16 h-16 my-3"
-              src={`http://openweathermap.org/img/wn/${item?.weather[0]?.icon}@2x.png`}
-              alt={item?.weather[0]?.description}
-            />
-            <h3 className="text-base font-semibold text-gray-600">
-              {item?.weather[0]?.description.toUpperCase()}
-            </h3>
-            <div className="text-xl font-medium text-blue-600 mt-2">
-              Temp: {item?.main?.temp}°C
+      {weatherForecastData?.loading ? (
+        <h1
+          style={{ minHeight: 276 }}
+          className="text-3xl font-bold text-gray-800 mb-4 text-center mt-28"
+        >
+          Loading...
+        </h1>
+      ) : weatherForecastData?.error ? (
+        <h1
+          style={{ minHeight: 276 }}
+          className="text-3xl font-bold text-gray-800 mb-4 text-center mt-28"
+        >
+          {weatherForecastData?.error}
+        </h1>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-8">
+          {list.map((item, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center bg-white p-6 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+            >
+              <h2 className="text-2xl font-semibold text-black-700">
+                {getDayFromTimestamp(item?.dt)}
+              </h2>
+              <img
+                className="w-16 h-16 my-3"
+                src={`http://openweathermap.org/img/wn/${item?.weather[0]?.icon}@2x.png`}
+                alt={item?.weather[0]?.description}
+              />
+              <h3 className="text-base font-semibold text-gray-600 capitalize">
+                {item?.weather[0]?.description}
+              </h3>
+              <div className="text-xl font-medium text-blue-600 mt-2">
+                Temp: {item?.main?.temp}°C
+              </div>
+              <div className="text-md text-gray-500">
+                Max/Min: {item?.main?.temp_max}°C / {item?.main?.temp_min}°C
+              </div>
             </div>
-            <div className="text-md text-gray-500">
-              Max/Min: {item?.main?.temp_max}°C / {item?.main?.temp_min}°C
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

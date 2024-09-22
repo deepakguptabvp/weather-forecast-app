@@ -30,56 +30,59 @@ const CurrentWeather = ({ currentWeatherData }) => {
   let day = weekday[date.getDay()];
   let month = monthName[date.getMonth()];
   const formattedDate = `${day}, ${month} ${date.getDate()} `;
-  console.log(currentWeatherData,"ekjdfsk");
+  console.log(currentWeatherData, "ekjdfsk");
 
   return (
-    <div className=" m-4 min-w-full bg-gradient-to-r from-yellow-100 via-orange-300 to-yellow-50 p-8 rounded-3xl shadow-lg">
-      <div className="border-gray-950   text-center">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          {name},{" "}
-          <span className="text-gray-900">
-            {currentWeatherData?.data?.sys.country}
-
-          </span>
+    <div
+      style={{ minHeight: 316 }}
+      className="flex items-center justify-center m-4 min-w-full bg-gradient-to-r from-yellow-100 via-orange-300 to-yellow-50 p-8 rounded-3xl shadow-lg"
+    >
+      {currentWeatherData?.loading ? (
+        <h1 className="text-3xl font-bold text-gray-800 mb-4 text-center">
+          Loading...
         </h1>
+      ) : currentWeatherData?.error ? (
+        <h1 className="text-3xl font-bold text-gray-800 mb-4 text-center">
+          {currentWeatherData?.error}
+        </h1>
+      ) : (
+        <div className="border-gray-950  text-center">
+          <h1 className="text-3xl font-bold text-gray-800 mb-4">
+            {name},{" "}
+            <span className="text-gray-900">
+              {currentWeatherData?.data?.sys.country}
+            </span>
+          </h1>
 
-        {/* Weather Icon */}
-        {/* Uncomment this when using Next.js Image component */}
-        {/* <Image 
-          width={100}
-          height={100}
-          alt="weather-icon"
-          src={`https://openweathermap.org/img/wn/${currentWeatherData?.weather[0]?.icon}@2x.png`}
-          className="mx-auto"
-        />  */}
+          <div className="flex items-center justify-center flex-auto">
+            <img
+              className=" w-auto h-auto"
+              src={`http://openweathermap.org/img/wn/${currentWeatherData?.data?.weather[0]?.icon}@2x.png`}
+              alt={currentWeatherData?.data?.weather[0]?.description}
+            />
+            <h2 className="flex flex-wrap text-6xl font-extrabold text-slate-800 mb-4">
+              {Math.round(temp)}°C
+            </h2>
+          </div>
 
-        <div className="flex items-center justify-center flex-auto">
-          <img
-            className=" w-auto h-auto"
-            src={`http://openweathermap.org/img/wn/${currentWeatherData?.data?.weather[0]?.icon}@2x.png`}
-            alt={currentWeatherData?.data?.weather[0]?.description}
-          />
-          <h2 className="flex flex-wrap text-6xl font-extrabold text-slate-800 mb-4">
-            {Math.round(temp)}°C
-          </h2>
-          <p className="flex flex-wrap text-lg text-gray-700 capitalize">
+          <p className=" text-lg text-gray-700 capitalize ">
             {desc}
           </p>
-        </div>
+          
+          <p className="text-gray-900 text-lg mb-6">{formattedDate}</p>
 
-        <p className="text-gray-900 text-lg mb-6">{formattedDate}</p>
-
-        <div className="flex justify-around text-gray-700">
-          <div className="text-center">
-            <p className="text-sm">Min Temp</p>
-            <p className="text-xl font-bold">{Math.round(min)}°C</p>
-          </div>
-          <div className="text-center">
-            <p className="text-sm">Max Temp</p>
-            <p className="text-xl font-bold">{Math.round(max)}°C</p>
+          <div className="flex justify-around text-gray-700">
+            <div className="text-center">
+              <p className="text-sm">Min Temp</p>
+              <p className="text-xl font-bold">{Math.round(min)}°C</p>
+            </div>
+            <div className="text-center">
+              <p className="text-sm">Max Temp</p>
+              <p className="text-xl font-bold">{Math.round(max)}°C</p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
