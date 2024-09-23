@@ -23,9 +23,12 @@ const App = () => {
     handleSubmit("New York");
   }, []);
 
-  const handleSubmit = (city: any) => {
+  const handleSubmit = (city) => {
     try {
-      const API_KEY = "776ee648de6a5eb986f140c70c3eb660";
+      const API_KEY =
+        process.env.NODE_ENV == "development"
+          ? process.env.NEXT_PUBLIC_REACT_APP_WEATHER_API_KEY
+          : process.env.REACT_APP_WEATHER_API_KEY;
       const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
       setCurrentWeatherData((prevState) => ({
         ...prevState,
@@ -65,7 +68,7 @@ const App = () => {
           }));
         });
       // api.openweathermap.org/data/2.5/forecast/daily?q=London&units=metric&cnt=7&appid={API key}
-      const weatherForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&cnt=40&appid=${API_KEY}`;
+      const weatherForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`;
 
       setWeatherForecastData((prevState) => ({
         ...prevState,

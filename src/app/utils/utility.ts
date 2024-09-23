@@ -1,28 +1,35 @@
 export const getFiveDayForecast = (forecastData) => {
     const dailyForecast = {};
 
-    // Get today's date
+    // Get today's date and format it as YYYY-MM-DD
     const today = new Date();
+    const todayString = today.toISOString().split("T")[0];
+
+    // Get tomorrow's date
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const tomorrowString = tomorrow.toISOString().split("T")[0]; // Format as YYYY-MM-DD
 
     // Loop through the forecast data
     forecastData.forEach((entry) => {
-        // Convert dt_txt to a JavaScript Date object
-        const forecastDate = new Date(entry.dt_txt);
+        // Extract the date part from dt_txt (YYYY-MM-DD)
+        const forecastDateString = entry.dt_txt.split(" ")[0];
 
-        // Check if the forecast date is after today
-        if (forecastDate > today) {
-            const dateKey = forecastDate.toISOString().split("T")[0]; // Extract the date part only (YYYY-MM-DD)
-
-            // Select one forecast per day (e.g., at 12:00 PM)
-            if (!dailyForecast[dateKey] && forecastDate.getHours() === 12) {
-                dailyForecast[dateKey] = entry;
+        // Only consider forecast entries starting from tomorrow
+        if (forecastDateString >= tomorrowString) {
+            // If no forecast for this day or if the current entry is closer to 12:00 PM, store it
+            if (!dailyForecast[forecastDateString] || Math.abs(new Date(entry.dt_txt).getHours() - 12) < Math.abs(new Date(dailyForecast[forecastDateString].dt_txt).getHours() - 12)) {
+                dailyForecast[forecastDateString] = entry;
             }
         }
     });
+
     // Convert the object to an array and return only the first 5 days
     const fiveDayForecast = Object.values(dailyForecast).slice(0, 5);
     return fiveDayForecast;
 }
+
+
 
 export const getDayFromTimestamp = (timestamp) => {
     const dateObj = new Date(timestamp * 1000);
