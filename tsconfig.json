@@ -21,6 +21,19 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/CurrentWeather.jsx", "src/app/components/SearchInputBox.jsx", "src/app/components/ToggleTemp.jsx", "src/app/components/WeatherForecast.jsx", "src/app/components/App.jsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/components/CurrentWeather.jsx",
+    "src/app/components/SearchInputBox.jsx",
+    "src/app/components/ToggleTemp.jsx",
+    "src/app/components/WeatherForecast.jsx",
+    "src/app/components/App.jsx",
+    "src/app/utils/utility.js",
+    "src/app/page.jsx",
+    "src/app/layout.jsx"
+  ],
   "exclude": ["node_modules"]
 }
