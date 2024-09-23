@@ -32,8 +32,8 @@
     "src/app/components/WeatherForecast.jsx",
     "src/app/components/App.jsx",
     "src/app/utils/utility.js",
-    "src/app/page.jsx",
-    "src/app/layout.jsx"
+    "src/app/page.tsx",
+    "src/app/layout.tsx"
   ],
   "exclude": ["node_modules"]
 }
