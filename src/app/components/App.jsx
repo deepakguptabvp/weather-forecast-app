@@ -25,10 +25,7 @@ const App = () => {
 
   const handleSubmit = (city) => {
     try {
-      const API_KEY =
-        process.env.NODE_ENV == "development"
-          ? process.env.NEXT_PUBLIC_WEATHER_API_KEY
-          : process.env.WEATHER_API_KEY;
+      const API_KEY = "776ee648de6a5eb986f140c70c3eb660";
       const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
       setCurrentWeatherData((prevState) => ({
         ...prevState,
