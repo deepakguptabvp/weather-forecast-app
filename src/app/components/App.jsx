@@ -64,7 +64,7 @@ const App = () => {
             loading: false,
           }));
         });
-      // api.openweathermap.org/data/2.5/forecast/daily?q=London&units=metric&cnt=7&appid={API key}
+
       const weatherForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`;
 
       setWeatherForecastData((prevState) => ({
@@ -108,7 +108,6 @@ const App = () => {
     } catch (error) {
       console.error("Error", error);
     }
-    console.log("submit", city);
   };
 
   return (

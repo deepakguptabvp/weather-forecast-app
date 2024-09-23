@@ -34,21 +34,3 @@ const SearchInputBox = (props) => {
 
 export default SearchInputBox;
 
-// <div>
-//   <input
-//     type="text"
-//     value={city}
-//     placeholder="Enter your city"
-//     onChange={(e) => {
-//       setCity(e.target.value);
-//     }}
-//     className="w-40 "
-//   />
-//   <button
-//     onClick={() => {
-//       onSubmit(city);
-//     }}
-//   >
-//     Search
-//   </button>
-//  </div>

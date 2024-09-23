@@ -21,7 +21,6 @@ const CurrentWeather = ({ currentWeatherData, unit }) => {
 
   const displayUnit = unit === "metric" ? "°C" : "°F";
 
-  // const formattedDate = new Date(date * 1000).toLocaleDateString(); // Formatting the date
   const date = new Date();
   const weekday = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
 
@@ -43,7 +42,6 @@ const CurrentWeather = ({ currentWeatherData, unit }) => {
   let day = weekday[date.getDay()];
   let month = monthName[date.getMonth()];
   const formattedDate = `${day}, ${month} ${date.getDate()} `;
-
 
   return (
     <div
