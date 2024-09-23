@@ -5,7 +5,7 @@
 <h1>Weather Forecast Application</h1>
 <p>This&nbsp;<span style="box-sizing: border-box; margin: 0px; padding: 0px;"><strong>React. js-</strong>based weather forecast application&nbsp;</span>fetches and displays current weather and 5-day forecast data for a user-selected city. It uses the <strong>OpenWeatherMap API</strong> to retrieve real-time weather data and offers features like temperature unit conversion (Celsius to Fahrenheit), city search, and reusable components.</p>
 <h2>Deployed Application</h2>
-<p>The application is live and can be accessed <a target="https://weather-forecast-app-git-11ac5b-deepak-guptas-projects-1890f5e1.vercel.app/" rel="noopener">Weather Forecast App</a>.</p>
+<p>The application is live and can be accessed <a href="https://weather-forecast-app-beige.vercel.app/" target="https://weather-forecast-app-git-11ac5b-deepak-guptas-projects-1890f5e1.vercel.app/" rel="noopener">Weather Forecast App</a>.</p>
 <hr />
 <h2>Features</h2>
 <ol>
