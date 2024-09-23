@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import SearchInputBox from "./SearchInputBox";
 import CurrentWeather from "./CurrentWeather";
 import WeatherForecast from "./WeatherForecast";
-import { error, log } from "console";
+import ToggleTemp from "./ToggleTemp";
 
 const App = () => {
   const [currentWeatherData, setCurrentWeatherData] = useState({
@@ -17,9 +17,10 @@ const App = () => {
     data: null,
   });
 
+  const [unit, setUnit] = useState("metric");
+
   useEffect(() => {
     handleSubmit("New York");
-    console.log("wde");
   }, []);
 
   const handleSubmit = (city: any) => {
@@ -34,11 +35,21 @@ const App = () => {
         .then((response) => response.json())
         .then((currentWeatherResponse) => {
           console.log("currentWeatherResponse ", currentWeatherResponse);
-          setCurrentWeatherData((prevState) => ({
-            ...prevState,
-            data: currentWeatherResponse,
-            error:""
-          }));
+          if (currentWeatherResponse?.cod === 200) {
+            setCurrentWeatherData((prevState) => ({
+              ...prevState,
+              data: currentWeatherResponse,
+              error: "",
+            }));
+          } else {
+            setCurrentWeatherData((prevState) => ({
+              ...prevState,
+              data: null,
+              error:
+                currentWeatherResponse?.message ||
+                "Current Weather API failed...",
+            }));
+          }
         })
         .catch((error) => {
           console.error(error);
@@ -64,16 +75,24 @@ const App = () => {
       fetch(weatherForecastUrl)
         .then((response) => response.json())
         .then((weatherForecastResponse) => {
-          //  throw Error("error 12e3");
           console.log("weatherForecastResponse ", weatherForecastResponse);
-          setWeatherForecastData((prevState) => ({
-            ...prevState,
-            data: weatherForecastResponse,
-            error:""
-          }));
+          if (weatherForecastResponse?.cod === "200") {
+            setWeatherForecastData((prevState) => ({
+              ...prevState,
+              data: weatherForecastResponse,
+              error: "",
+            }));
+          } else {
+            setWeatherForecastData((prevState) => ({
+              ...prevState,
+              data: null,
+              error:
+                weatherForecastResponse?.message ||
+                "Weather Forecast API failed...",
+            }));
+          }
         })
         .catch((error) => {
-          console.error(error);
           setWeatherForecastData((prevState) => ({
             ...prevState,
             error:
@@ -92,15 +111,17 @@ const App = () => {
     console.log("submit", city);
   };
 
-  console.log("helloo2222", currentWeatherData, weatherForecastData);
-
   return (
-    <div className="flex flex-col items-center justify-center ">
-      <h1 className="font-bold text-4xl mt-5">Weather-Forecast</h1>
-      <SearchInputBox onSubmit={handleSubmit} />
-
-      <CurrentWeather currentWeatherData={currentWeatherData} />
-      <WeatherForecast weatherForecastData={weatherForecastData} />
+    <div className="flex flex-col items-center justify-center">
+      <h1 className="sm:text-3xl lg:text-3xl m-4 font-bold text-gray-700 rounded-full px-5 py-3 bg-gradient-to-r from-yellow-100 via-orange-200 to-yellow-100 shadow-lg">
+        Weather Forecast App
+      </h1>
+      <div className="flex justify-center flex-col items-center p-8 rounded-3xl shadow-lg min-w-full bg-gradient-to-r from-yellow-100 via-orange-300 to-yellow-50">
+        <SearchInputBox onSubmit={handleSubmit} />
+        <ToggleTemp unit={unit} setUnit={setUnit} />
+      </div>
+      <CurrentWeather unit={unit} currentWeatherData={currentWeatherData} />
+      <WeatherForecast unit={unit} weatherForecastData={weatherForecastData} />
     </div>
   );
 };

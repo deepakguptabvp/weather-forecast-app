@@ -1,14 +1,13 @@
 "use client";
 import React, { useState } from "react";
 
-const SearchInputBox = (props: any) => {
+const SearchInputBox = (props) => {
   const [city, setCity] = useState("New York");
-  console.log(props);
 
   const { onSubmit } = props;
 
   return (
-    <div className="flex mt-4 min-w-full text-center justify-center  bg-gradient-to-r from-yellow-100 via-orange-300 to-yellow-50  p-8 rounded-3xl shadow-lg">
+    <div className="flex mt-4 text-center justify-center ">
       <div className="relative">
         <input
           type="text"
