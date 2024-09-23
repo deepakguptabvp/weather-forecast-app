@@ -49,32 +49,14 @@
 <li>
 <p><strong>Clone the Repository</strong>:</p>
 <div class="dark bg-gray-950 contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative">
-<div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-bash">git <span class="hljs-built_in">clone</span> https://weather-forecast-app-git-11ac5b-deepak-guptas-projects-1890f5e1.vercel.app/</code></div>
+<div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-bash">git <span class="hljs-built_in">clone</span> https://github.com/deepakguptabvp/weather-forecast-app.git</code></div>
 </div>
 </li>
 <li>
 <p><strong>Install Dependencies</strong>: Make sure you have <code>npm</code> installed, then run:</p>
 <div class="dark bg-gray-950 contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative">
-<div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-bash">npm install </code></div>
+<div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-bash">npm install</code></div>
 </div>
-</li>
-<li>
-<p><strong>Obtain an API Key</strong>: Sign up on <a href="https://openweathermap.org/" target="_new" rel="noopener">OpenWeatherMap</a> and get your API key.</p>
-</li>
-<li>
-<p><strong>Add API Key</strong>:</p>
-<ul>
-<li>Create a <code>.env</code> file in the project root and add your OpenWeatherMap API key:
-<div class="dark bg-gray-950 contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative">
-<div class="sticky top-9 md:top-[5.75rem]">
-<div class="absolute bottom-0 right-2 flex h-9 items-center">
-<div class="flex items-center rounded bg-token-main-surface-secondary px-2 font-sans text-xs text-token-text-secondary">&nbsp;</div>
-</div>
-</div>
-<div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-makefile">REACT_APP_WEATHER_API_KEY&nbsp;= your_api_key</code></div>
-</div>
-</li>
-</ul>
 </li>
 <li>
 <p><strong>Run the App</strong>:</p>
