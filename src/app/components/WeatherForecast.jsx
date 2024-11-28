@@ -43,25 +43,25 @@ const WeatherForecast = ({ weatherForecastData, unit }) => {
             return (
               <div
                 key={index}
-                className="flex flex-col items-center bg-white p-6 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="flex flex-col items-center text-center justify-center bg-white p-20 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <h2 className="text-2xl font-semibold text-black-700">
+                <h2 className="text-5xl font-semibold text-black-700">
                   {getDayFromTimestamp(item?.dt)}
                 </h2>
                 <img
-                  className="w-16 h-16 my-3"
+                  className="w-24 h-24 "
                   src={`http://openweathermap.org/img/wn/${item?.weather[0]?.icon}@2x.png`}
                   alt={item?.weather[0]?.description}
                 />
-                <h3 className="text-base font-semibold text-gray-600 capitalize">
+                <h3 className="text-xl font-semibold text-gray-600 capitalize">
                   {item?.weather[0]?.description}
                 </h3>
 
-                <div className="text-md text-gray-500">
+                <div className="text-md font-semibold text-gray-500">
                   Min: {Math.round(min)}
                   {displayUnit}
                 </div>
-                <div className="text-md text-gray-500">
+                <div className="text-md font-semibold text-gray-500">
                   Max: {Math.round(max)}
                   {displayUnit}
                 </div>
